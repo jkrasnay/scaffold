@@ -44,7 +44,7 @@ public class VelocityTemplateProcessor implements TemplateProcessor {
                 if (m.find()) {
                     int line = Integer.parseInt(m.group(1));
                     int column = Integer.parseInt(m.group(2));
-                    throw new TemplateParseException(template, line, column);
+                    throw new TemplateParseException(template, line, column, ex.getMessage());
                 }
             }
 

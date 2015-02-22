@@ -15,8 +15,12 @@
 package ca.krasnay.scaffold;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.joda.time.LocalDate;
@@ -96,10 +100,16 @@ public class Scaffold {
         String packageName = entityClass.getPackage().getName();
         String entityName = entityClass.getSimpleName();
 
+        List<Field> fields = new ArrayList<Field>();
+        for (Field field : entityClass.getDeclaredFields()) {
+            if (!Modifier.isStatic(field.getModifiers())) {
+                fields.add(field);
+            }
+        }
         map.put("package", packageName);
         map.put("Entity", entityName);
         map.put("entity", entityName.substring(0, 1).toLowerCase() + entityName.substring(1));
-        map.put("fields", entityClass.getDeclaredFields());
+        map.put("fields", fields);
         map.put("date", new LocalDate().toString());
         map.put("scaffold", this);
 

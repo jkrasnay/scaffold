@@ -24,12 +24,13 @@ public class TemplateParseException extends RuntimeException {
     private String template;
     private int line;
     private int column;
+    private String message;
 
-    public TemplateParseException(String template, int line, int column) {
-        super();
+    public TemplateParseException(String template, int line, int column, String message) {
         this.template = template;
         this.line = line;
         this.column = column;
+        this.message = message;
     }
 
     /**
@@ -53,6 +54,10 @@ public class TemplateParseException extends RuntimeException {
         return column;
     }
 
+    @Override
+    public String getMessage() {
+        return String.format("line %d, col %d: %s", line, column, message);
+    }
 
     /**
      * Returns a two-line string indicating the error. The returned string
