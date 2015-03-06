@@ -137,11 +137,16 @@ public class Scaffold {
         if (outFile.exists()) {
             System.out.println("Skipping " + outFile + ": already exists");
         } else {
+
             System.out.println("Creating " + outFile);
+
+            // Create any missing directories
+            outFile.getParentFile().mkdirs();
 
             String template = IOUtils.toStringUtf8(new File(templateDir, templateProcessor.process(templateName, mergeFields, false)));
             String output = templateProcessor.process(template, mergeFields, false);
             IOUtils.copy(new StringSource(output), new FileSink(outFile));
+
         }
 
         return this;
