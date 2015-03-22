@@ -4,7 +4,7 @@
   <groupId>ca.krasnay</groupId>
   <artifactId>scaffold</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>Scaffold</name>
   <description>A small utility for generating code based on a domain class.</description>
@@ -30,7 +30,7 @@
     <connection>scm:git:git@github.com:jkrasnay/scaffold.git</connection>
     <developerConnection>scm:git:git@github.com:jkrasnay/scaffold.git</developerConnection>
     <url>git@github.com:jkrasnay/scaffold.git</url>
-    <tag>HEAD</tag>
+    <tag>scaffold-1.0</tag>
   </scm>
 
   <distributionManagement>
